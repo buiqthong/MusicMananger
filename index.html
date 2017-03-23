@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!--Inject libraries-->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="style/main.css"/>
+    <title>New Music Manager</title>
+</head >
+<body ng-app="mainApp" ng-controller="MusicController">
+<div class="header">
+    <div class="logo pull-left">
+        <a href="index.html#/songs">
+            <h3><i class="fa fa-music" aria-hidden="true"></i> {{'appTitle'| i18next}}</h3>
+        </a>
+        <h5>{{'appSubTitle'| i18next}}</h5>
+    </div>
+    <div class="select-language pull-right">
+        <select class="form-control" ng-model="selectedLang">
+            <option ng-repeat="lang in langs" value="{{lang.key}}">{{lang.name}}</option>
+        </select>
+    </div>
+</div>
+<div class="container-fluid">
+    <div id="wrapper" ng-class="{'toggled': clicked}">
+        <div id="sidebar-wrapper">
+            <div class="toggle-btn" ng-click="toggleSidebar()"><i class="fa fa-bars" aria-hidden="true"></i></div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a class="text-center" href="#">HOME</a>
+                </li>
+                <li><a href="#/songs">Song</a></li>
+                <li><a href="#/playlist">Playlist</a></li>
+            </ul>
+        </div>
+        <div id="page-content-wrapper">
+            <div ng-view></div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <h5>{{'appFooter'| i18next}}</h5>
+</div>
+<!--Inject libraries-->
+<script src="bower_components/jquery/jquery.min.js"></script>
+<script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/lodash/lodash.js"></script>
+<script src="bower_components/i18next/i18next.min.js"></script>
+<script src="bower_components/ng-i18next/dist/ng-i18next.min.js"></script>
+
+<script src="app/music.module.js"></script>
+<script src="app/music.controller.js"></script>
+<script src="app/music.route.js"></script>
+<script src="app/music.constant.js"></script>
+
+<script src="component/breadcrumb/breadcrumb.directive.js"></script>
+<script src="component/table/table.directive.js"></script>
+<script src="component/modal/modal.js"></script>
+
+<script src="app/songs/song.controller.js"></script>
+<script src="app/songs/song.directive.js"></script>
+<script src="app/songs/song.service.js"></script>
+
+<script src="app/playlist/playlist.controller.js"></script>
+<script src="app/playlist/playlist.service.js"></script>
+<script src="app/playlist/playlist.directive.js"></script>
+</body>
+</html>

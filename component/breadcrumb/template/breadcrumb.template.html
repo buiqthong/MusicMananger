@@ -1,0 +1,4 @@
+<div class="btn-group btn-breadcrumb">
+    <a href="#/" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a>
+    <a ng-repeat="breadcrumb in bcData" href="#" class="btn btn-default" ng-click="breadcrumb.link()">{{breadcrumb.title}}</a>
+</div>

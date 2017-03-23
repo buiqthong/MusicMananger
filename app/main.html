@@ -1,0 +1,16 @@
+<div class="music-app">
+    <div class="music-heading">
+        <div class="pull-left">
+            <!--<h3>{{'appTitle'| i18next}}</h3>-->
+        </div>
+        <div class="pull-right">
+            <button type="button" class="btn btn-default">Add</button>
+            <button type="button" class="btn btn-default">Edit</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+    </div>
+   <div class="music-breadcrumb">
+       <breadcrumb bc-data="vm.breadcrumb"></breadcrumb>
+   </div>
+    <div ng-include="vm.currentTemplate"></div>
+</div>

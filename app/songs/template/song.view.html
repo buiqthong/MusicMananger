@@ -1,0 +1,9 @@
+<div class="panel panel-info">
+    <div class="panel-heading">{{'songsTitle'| i18next}}</div>
+    <div class="panel-body">
+        <table-directive data="vm.listSongs"
+                         columns="vm.configColumnSongsTable"
+                         selected-list="vm.selectedSongs">
+        </table-directive>
+    </div>
+</div>

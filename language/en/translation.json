@@ -1,0 +1,14 @@
+{
+  "appTitle": "Music Manager",
+  "appSubTitle": "Let the music flow into your heart",
+  "appFooter": "Copyright by Music Manager v1.0",
+  "songsTitle": "Song manager",
+  "playlistTitle": "Playlist manager",
+  "quantity": "Quantity",
+  "action":"Action",
+  "messageError": "Some thing went wrong !",
+  "editItem": "Edit",
+  "deleteItem":"Delete",
+  "addItem": "Add",
+  "deleteAllItem":"Delete"
+}
