@@ -11,7 +11,7 @@
         <thead>
         <tr>
             <th style="width:40px" ng-click="checkAll()">
-                <input class="check-box" type="checkbox" ng-model="checkAllCheckbox"/>
+                <input class="check-box" type="checkbox" ng-checked="selectAllCheckbox()"/>
             </th>
             <th ng-repeat="column in columns">
                 <span class="header-title" ng-click="sortType(column.field)" ng-bind="column.title"></span>

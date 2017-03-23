@@ -15,6 +15,7 @@
                 templateUrl: 'component/table/template/table.template.html',
                 controller: ['$scope',function ($scope) {
 
+                    // Select check box
                     $scope.selectCheckbox = function (item) {
                         for(var i=0;i<$scope.selectedList.length;i++){
                             if($scope.selectedList[i].id === item.id) {
@@ -23,18 +24,24 @@
                         }
                     };
 
+                    // Select all check box
+                    $scope.selectAllCheckbox = function () {
+                        if($scope.data.length === $scope.selectedList.length){
+                            return true;
+                        }
+                    };
+
                     // Check all check box
-                    $scope.checkAllCheckbox = false;
                     $scope.checkAll = function () {
-                        if($scope.checkAllCheckbox){
+                        if($scope.selectAllCheckbox()){
+                            $scope.selectedList.splice(0, $scope.selectedList.length);
+                        }
+                        else {
                             $scope.selectedList.splice(0, $scope.selectedList.length);
                             for(var i = 0; i < $scope.data.length; i++){
                                 $scope.data[i].selected = true;
                                 $scope.selectedList.push( $scope.data[i]);
                             }
-                        }
-                        else {
-                            $scope.selectedList.splice(0, $scope.selectedList.length);
                         }
                     };
 
@@ -64,7 +71,6 @@
                     };
 
                     // Sort
-                    $scope.sortReverse = false;
                     $scope.sortType = function (valueSort) {
                         if ($scope.valueSort === valueSort) {
                             $scope.sortReverse = !$scope.sortReverse;
@@ -74,11 +80,17 @@
                         $scope.valueSort = valueSort;
                     };
 
-                    $scope.$watch('selectedList', function (newVal) {
-                        if(newVal){
-                            console.log(newVal);
-                        }
-                    })
+                    // $scope.watchSelectedList = $scope.$watch(function () {
+                    //     return
+                    // }, function (newVal) {
+                    //     if(newVal){
+                    //         console.log(newVal);
+                    //     }
+                    // });
+                    //
+                    // $scope.$on('$destroy', function () {
+                    //     $scope.watchSelectedList();
+                    // });
 
                 }]
             }
