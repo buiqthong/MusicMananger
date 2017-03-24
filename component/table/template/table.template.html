@@ -35,7 +35,7 @@
     </div>
 </div>
 <div class="detail-view">
-    <div class="panel panel-default">
+    <div class="panel panel-default" ng-if="checkDetailView() && !hideDetail">
         <div class="panel-body">
             <div ng-include="detailTemplate"></div>
         </div>

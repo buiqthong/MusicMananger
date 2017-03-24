@@ -19,14 +19,18 @@
                     scope.detailTemplate = 'component/table/template/table-detail.template.html';
 
                     function showDetailView() {
+                        scope.hideDetail= false;
                         bodyView.addClass('col-md-6');
                         detailView.addClass('col-md-6');
                     }
 
-                    function hideDetailView() {
+                    scope.hideDetailView = function() {
+                        scope.hideDetail= true;
                         bodyView.removeClass('col-md-6');
                         detailView.removeClass('col-md-6');
-                    }
+                    };
+
+
 
                     scope.checkDetailView = function () {
                         return scope.selectedList.length === 1;
@@ -79,15 +83,17 @@
                                 break;
                             }
                         }
-                        console.log(index);
                         if(index < 0){
-                            hideDetailView();
+                            scope.hideDetailView();
                             item.selected = true;
                             scope.selectedList.push(item);
                         }
                         else {
-                            hideDetailView();
+                            scope.hideDetailView();
                             scope.selectedList.splice(index,1);
+                        }
+                        if(scope.checkDetailView()){
+                            showDetailView();
                         }
                     };
 
@@ -100,18 +106,6 @@
                         }
                         scope.valueSort = valueSort;
                     };
-
-                    // scope.watchSelectedList = scope.$watch(function () {
-                    //     return
-                    // }, function (newVal) {
-                    //     if(newVal){
-                    //         console.log(newVal);
-                    //     }
-                    // });
-                    //
-                    // scope.$on('$destroy', function () {
-                    //     scope.watchSelectedList();
-                    // });
 
                 }
             }
