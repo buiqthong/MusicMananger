@@ -6,22 +6,15 @@
     angular.module('mod.modal',[])
         .directive('modal', function () {
             return {
-                restrict: 'EA',
+                restrict: 'AE',
                 scope: {
-                    title: '=modalTitle',
-                    header: '=modalHeader',
-                    body: '=modalBody',
-                    callbackbuttonleft: '&ngClickLeftButton',
-                    callbackbuttonright: '&ngClickRightButton',
-                    handler: '=lolo'
+                    title: '=',
+                    body: '='
                 },
                 templateUrl: 'component/modal/template/modal.html',
-                transclude: true,
-                controller: function ($scope) {
-                    $scope.handler = 'modal';
-                    $scope.header = 'Delete item';
-                    $scope.body = 'Are you sure delete this Item';
-                }
+                controller: ['$scope',function ($scope) {
+
+                }]
             };
         })
 })();

@@ -20,5 +20,8 @@
         vm.listSongs = SongsService.listSongs;
         vm.configColumnSongsTable = SongsService.listColumn;
         vm.selectedSongs = [];
+        vm.modalTitle = 'Delete song';
+        vm.modalBody = 'Are you sure you want to delete this song';
+
     }
 })();

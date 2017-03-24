@@ -20,5 +20,7 @@
         vm.listPlaylist = PlaylistService.listPlaylist;
         vm.configColumnPlaylistTable = PlaylistService.listColumn;
         vm.selectedPlaylist = [];
+        vm.modalTitle = 'Delete playlist';
+        vm.modalBody = 'Are you sure you want to delete this playlist';
 }
 })();

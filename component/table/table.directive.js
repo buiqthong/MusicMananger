@@ -13,74 +13,94 @@
                     selectedList: '='
                 },
                 templateUrl: 'component/table/template/table.template.html',
-                controller: ['$scope',function ($scope) {
+                link: function (scope, element, attrs) {
+                    var bodyView = element.find('.body-view');
+                    var detailView = element.find('.detail-view');
+
+                    function showDetailView() {
+                        bodyView.addClass('col-md-6');
+                        detailView.addClass('col-md-6');
+                    }
+
+                    function hideDetailView() {
+                        bodyView.removeClass('col-md-6');
+                        detailView.removeClass('col-md-6');
+                    }
+
+                    scope.checkDetailView = function () {
+                        return scope.selectedList.length === 1;
+                    };
 
                     // Select check box
-                    $scope.selectCheckbox = function (item) {
-                        for(var i=0;i<$scope.selectedList.length;i++){
-                            if($scope.selectedList[i].id === item.id) {
+                    scope.selectCheckbox = function (item) {
+                        for(var i=0;i<scope.selectedList.length;i++){
+                            if(scope.selectedList[i].id === item.id) {
                                 return true;
                             }
                         }
                     };
 
                     // Select all check box
-                    $scope.selectAllCheckbox = function () {
-                        if($scope.data.length === $scope.selectedList.length){
+                    scope.selectAllCheckbox = function () {
+                        if(scope.data.length === scope.selectedList.length){
                             return true;
                         }
                     };
 
                     // Check all check box
-                    $scope.checkAll = function () {
-                        if($scope.selectAllCheckbox()){
-                            $scope.selectedList.splice(0, $scope.selectedList.length);
+                    scope.checkAll = function () {
+                        if(scope.selectAllCheckbox()){
+                            scope.selectedList.splice(0, scope.selectedList.length);
                         }
                         else {
-                            $scope.selectedList.splice(0, $scope.selectedList.length);
-                            for(var i = 0; i < $scope.data.length; i++){
-                                $scope.data[i].selected = true;
-                                $scope.selectedList.push( $scope.data[i]);
+                            scope.selectedList.splice(0, scope.selectedList.length);
+                            for(var i = 0; i < scope.data.length; i++){
+                                scope.data[i].selected = true;
+                                scope.selectedList.push( scope.data[i]);
                             }
                         }
                     };
 
                     // Click on row to select single item
-                    $scope.clickItem = function (item) {
+                    scope.clickItem = function (item) {
                         item.selected = true;
-                        $scope.selectedList.splice(0, $scope.selectedList.length);
-                        $scope.selectedList.push(item);
+                        scope.selectedList.splice(0, scope.selectedList.length);
+                        scope.selectedList.push(item);
+                        showDetailView();
                     };
 
                     // Click on check box to select multiple item
-                    $scope.clickMultipleItem = function (item) {
+                    scope.clickMultipleItem = function (item) {
                         var index = -1;
-                        for(var i = 0;i < $scope.selectedList.length;i++){
-                            if(angular.equals($scope.selectedList[i],item)){
+                        for(var i = 0;i < scope.selectedList.length;i++){
+                            if(angular.equals(scope.selectedList[i],item)){
                                 index = i;
                                 break;
                             }
                         }
+                        console.log(index);
                         if(index < 0){
+                            hideDetailView();
                             item.selected = true;
-                            $scope.selectedList.push(item);
+                            scope.selectedList.push(item);
                         }
                         else {
-                            $scope.selectedList.splice(index,1);
+                            hideDetailView();
+                            scope.selectedList.splice(index,1);
                         }
                     };
 
                     // Sort
-                    $scope.sortType = function (valueSort) {
-                        if ($scope.valueSort === valueSort) {
-                            $scope.sortReverse = !$scope.sortReverse;
+                    scope.sortType = function (valueSort) {
+                        if (scope.valueSort === valueSort) {
+                            scope.sortReverse = !scope.sortReverse;
                         } else {
-                            $scope.sortReverse = false;
+                            scope.sortReverse = false;
                         }
-                        $scope.valueSort = valueSort;
+                        scope.valueSort = valueSort;
                     };
 
-                    // $scope.watchSelectedList = $scope.$watch(function () {
+                    // scope.watchSelectedList = scope.$watch(function () {
                     //     return
                     // }, function (newVal) {
                     //     if(newVal){
@@ -88,11 +108,11 @@
                     //     }
                     // });
                     //
-                    // $scope.$on('$destroy', function () {
-                    //     $scope.watchSelectedList();
+                    // scope.$on('$destroy', function () {
+                    //     scope.watchSelectedList();
                     // });
 
-                }]
+                }
             }
         })
 })();

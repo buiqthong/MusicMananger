@@ -1,35 +1,43 @@
-<form>
-    <div class="form-group">
-        <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-search"></i></div>
-            <input type="text" class="form-control" placeholder="Search..." ng-model="search">
+<div class="body-view">
+    <form>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                <input type="text" class="form-control" placeholder="Search..." ng-model="search">
+            </div>
+        </div>
+    </form>
+    <div class="table-responsive">
+        <table id="tableDirective" class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th style="width:40px" ng-click="checkAll()">
+                    <input class="check-box" type="checkbox" ng-checked="selectAllCheckbox()"/>
+                </th>
+                <th ng-repeat="column in columns">
+                    <span class="header-title" ng-click="sortType(column.field)" ng-bind="column.title"></span>
+                    <i class="fa fa-caret-down" ng-show="valueSort === '{{column.field}}' && sortReverse"></i>
+                    <i class="fa fa-caret-up" ng-show="valueSort === '{{column.field}}'&& !sortReverse"></i>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in data | filter: search | orderBy: valueSort: sortReverse track by item.id"
+                ng-class="{'item-selected': selectCheckbox(item)}" ng-click="clickItem(item)">
+                <td style="width:40px">
+                    <input class="check-box" type="checkbox" ng-checked="selectCheckbox(item)"
+                           ng-click="clickMultipleItem(item);$event.stopPropagation();"/>
+                </td>
+                <td ng-repeat="row in columns">{{item[row.field]}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="detail-view">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            Detail view
         </div>
     </div>
-</form>
-<div class="table-responsive">
-    <table id="tableDirective" class="table table-striped table-bordered">
-        <thead>
-        <tr>
-            <th style="width:40px" ng-click="checkAll()">
-                <input class="check-box" type="checkbox" ng-checked="selectAllCheckbox()"/>
-            </th>
-            <th ng-repeat="column in columns">
-                <span class="header-title" ng-click="sortType(column.field)" ng-bind="column.title"></span>
-                <i class="fa fa-caret-down" ng-show="valueSort === '{{column.field}}' && sortReverse"></i>
-                <i class="fa fa-caret-up" ng-show="valueSort === '{{column.field}}'&& !sortReverse"></i>
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="item in data | filter: search | orderBy: valueSort: sortReverse track by item.id"
-            ng-class="{'item-selected': selectCheckbox(item)}" ng-click="clickItem(item)">
-            <td style="width:40px">
-                <input class="check-box" type="checkbox" ng-checked="selectCheckbox(item)"
-                       ng-click="clickMultipleItem(item);$event.stopPropagation();"/>
-            </td>
-            <td ng-repeat="row in columns">{{item[row.field]}}</td>
-        </tr>
-        </tbody>
-    </table>
 </div>
-<!--<div>Selected: {{checkedItemArray.length}}</div>-->

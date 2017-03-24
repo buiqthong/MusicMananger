@@ -6,8 +6,9 @@
         <div class="pull-right">
             <button type="button" class="btn btn-default">Add</button>
             <button type="button" class="btn btn-default">Edit</button>
-            <button type="button" class="btn btn-danger">Delete</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal">Delete</button>
         </div>
+        <modal title="vm.modalTitle" body="vm.modalBody"></modal>
     </div>
    <div class="music-breadcrumb">
        <breadcrumb bc-data="vm.breadcrumb"></breadcrumb>
