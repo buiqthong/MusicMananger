@@ -14,9 +14,9 @@
 <div class="header">
     <div class="logo pull-left">
         <a href="index.html#/songs">
-            <h3><i class="fa fa-music" aria-hidden="true"></i> {{'appTitle'| i18next}}</h3>
+            <h3><i class="fa fa-music" aria-hidden="true"></i> {{'music.appTitle'| i18next}}</h3>
         </a>
-        <h5>{{'appSubTitle'| i18next}}</h5>
+        <h5>{{'music.appSubTitle'| i18next}}</h5>
     </div>
     <div class="select-language pull-right">
         <select class="form-control" ng-model="selectedLang">
@@ -30,10 +30,10 @@
             <div class="toggle-btn" ng-click="toggleSidebar()"><i class="fa fa-bars" aria-hidden="true"></i></div>
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a class="text-center" href="#">HOME</a>
+                    <a class="text-center" href="#">{{'sideBar.home'| i18next}}</a>
                 </li>
-                <li><a href="#/songs">Song</a></li>
-                <li><a href="#/playlist">Playlist</a></li>
+                <li><a href="#/songs">{{'sideBar.song'| i18next}}</a></li>
+                <li><a href="#/playlist">{{'sideBar.playlist'| i18next}}</a></li>
             </ul>
         </div>
         <div id="page-content-wrapper">

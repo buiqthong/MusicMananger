@@ -1,14 +1,28 @@
 {
-  "appTitle": "Music Manager",
-  "appSubTitle": "Let the music flow into your heart",
-  "appFooter": "Copyright by Music Manager v1.0",
-  "songsTitle": "Song manager",
-  "playlistTitle": "Playlist manager",
-  "quantity": "Quantity",
-  "action":"Action",
-  "messageError": "Some thing went wrong !",
-  "editItem": "Edit",
-  "deleteItem":"Delete",
-  "addItem": "Add",
-  "deleteAllItem":"Delete"
+  "button-label": {
+    "create": "Create",
+    "edit": "Edit",
+    "delete": "Delete",
+    "apply": "Apply",
+    "cancel": "Cancel",
+    "hideDetail": "Hide detail"
+  },
+  "sideBar": {
+    "home": "HOME",
+    "song": "Song",
+    "playlist": "Playlist"
+  },
+  "music": {
+    "appTitle": "Music Manager",
+    "appSubTitle": "Let the music flow into your heart",
+    "appFooter": "Copyright by Music Manager v1.0"
+  },
+  "song": {
+    "songsTitle": "Song manager",
+    "createSong": "Create song",
+    "editSong": "Edit song"
+  },
+  "playlist": {
+    "playlistTitle": "Playlist manager"
+  }
 }

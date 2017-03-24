@@ -1,0 +1,47 @@
+<form class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="app-heading">
+            <span ng-if="vm.isCreate()">{{'song.createSong' | i18next}}</span>
+            <span ng-if="vm.isEdit()">{{'song.editSong' | i18next}}</span>
+        </h4>
+    </div>
+
+    <div class="panel-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-md-3 control-label">ghjghj</label>
+
+                <div class="col-md-6">
+                    <input class="form-control" ng-disabled="" ov-auto-focus="vm.isCreate()"
+                           ng-model="vm.cache.currentItem[vm.constant.playlist.attrs.name.key]"
+                           id="music-playlist-name">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">ghjhgj</label>
+
+                <div class="col-md-6">
+                    <input class="form-control" ov-auto-focus="" rows="3"
+                           ng-model="vm.cache.currentItem[vm.constant.playlist.attrs.description.key]"
+                           id="music-playlist-artist">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <div class="text-right">
+            <button id="playlist-add" ng-if="" type="submit" class="btn btn-primary"
+                    ng-click="" ng-disabled=""
+                    title="{{::'button-label.create' | i18next}}">{{::'button-label.create' | i18next}}
+            </button>
+            <button id="playlist-edit" ng-if="" type="submit" class="btn btn-primary"
+                    ng-click="" ng-disabled=""
+                    title="{{::'button-label.apply' | i18next}}">{{::'button-label.apply' | i18next}}
+            </button>
+            <button id="playlist-cancel" type="button" class="btn btn-default" ng-click="vm.goToHome()"
+                    title="{{::'button-label.cancel' | i18next}}">{{::'button-label.cancel' | i18next}}
+            </button>
+        </div>
+    </div>
+</form>

@@ -8,7 +8,7 @@
             return {
                 restrict: 'AE',
                 scope: {},
-                templateUrl: MusicConstant.music.templateUrl,
+                templateUrl: MusicConstant.song.templateUrl.main,
                 controller: 'SongsController',
                 controllerAs: 'vm'
             }

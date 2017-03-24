@@ -8,7 +8,8 @@
     ControllerFn.$inject =  ['PlaylistService','MusicConstant'];
     function ControllerFn(PlaylistService,MusicConstant) {
         var vm = this;
-        vm.currentTemplate = MusicConstant.playlist.templateUrl.view;
+        vm.cache = PlaylistService.cache;
+        vm.currentView = MusicConstant.playlist.templateUrl.view;
         vm.breadcrumb = [
             {
                 title: 'Playlist',

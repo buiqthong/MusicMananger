@@ -5,7 +5,7 @@
 (function () {
     'use strict';
     angular.module('mainApp')
-        .factory('SongsService',function () {
+        .factory('SongsService',['MusicConstant', function (MusicConstant) {
             var service = {};
             service.listColumn = [
                 {title: "Name", field: "name"},
@@ -27,6 +27,44 @@
                 {id: 12, name: "Tinh khuc vang", artist: "Dan Truong", view: 67901},
                 {id: 13, name: "Trong vang", artist: "Phuong Thanh", view: 27508}
             ];
+
+            function getCurrentView() {
+                return {
+                    view: {
+                        name: 'view',
+                        templateUrl: MusicConstant.song.templateUrl.view
+                    },
+                    add : {
+                        name: 'add',
+                        templateUrl: MusicConstant.song.templateUrl.action
+                    },
+                    edit: {
+                        name: 'edit',
+                        templateUrl: MusicConstant.song.templateUrl.action
+                    },
+                    result: {
+                        name: 'result',
+                        templateUrl: MusicConstant.song.templateUrl.result
+                    }
+                };
+            }
+
+
+            function defaultCacheData() {
+                return {
+                    currentView: getCurrentView().view,
+                    currentItem: {}
+                }
+            }
+
+            function init() {
+                service.cache = defaultCacheData();
+            }
+            init();
+
+            service.getCurrentView = getCurrentView;
+
+
             return service;
-        })
+        }])
 })();
