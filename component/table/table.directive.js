@@ -16,6 +16,7 @@
                 link: function (scope, element, attrs) {
                     var bodyView = element.find('.body-view');
                     var detailView = element.find('.detail-view');
+                    scope.detailTemplate = 'component/table/template/table-detail.template.html';
 
                     function showDetailView() {
                         bodyView.addClass('col-md-6');

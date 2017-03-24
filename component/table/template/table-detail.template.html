@@ -1,9 +1,9 @@
 <div class="form-horizontal">
-    <div class="form-group" ng-repeat="">
-        <label class="control-label col-md-5"></label>
+    <div class="form-group" ng-repeat="column in columns">
+        <label class="control-label col-md-5">{{column.title}}</label>
         <div>
             <div class="col-md-7 form-control-static">
-
+            {{selectedList[0][column.field]}}
             </div>
         </div>
     </div>
