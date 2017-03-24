@@ -9,7 +9,7 @@
     function ControllerFn(PlaylistService,MusicConstant) {
         var vm = this;
         vm.cache = PlaylistService.cache;
-        vm.currentView = MusicConstant.playlist.templateUrl.view;
+        vm.cache.currentView = PlaylistService.getCurrentView().view.templateUrl;
         vm.breadcrumb = [
             {
                 title: 'Playlist',

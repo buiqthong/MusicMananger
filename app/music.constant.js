@@ -17,6 +17,10 @@
                     action: 'app/songs/action/song.action.html',
                     directive: 'app/songs/template/song.directive.html',
                     view: 'app/songs/template/song.view.html'
+                },
+                attrs: {
+                    name: 'name',
+                    artist: 'artist'
                 }
             },
             playlist: {

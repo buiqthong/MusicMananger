@@ -18,20 +18,20 @@
                     var detailView = element.find('.detail-view');
                     scope.detailTemplate = 'component/table/template/table-detail.template.html';
 
+                    // Show detail view
                     function showDetailView() {
                         scope.hideDetail= false;
                         bodyView.addClass('col-md-6');
                         detailView.addClass('col-md-6');
                     }
-
+                    // Hide detail view
                     scope.hideDetailView = function() {
                         scope.hideDetail= true;
                         bodyView.removeClass('col-md-6');
                         detailView.removeClass('col-md-6');
                     };
 
-
-
+                    // Check condition to show detail view
                     scope.checkDetailView = function () {
                         return scope.selectedList.length === 1;
                     };
@@ -97,7 +97,7 @@
                         }
                     };
 
-                    // Sort
+                    // Sort by column
                     scope.sortType = function (valueSort) {
                         if (scope.valueSort === valueSort) {
                             scope.sortReverse = !scope.sortReverse;
