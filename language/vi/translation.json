@@ -13,11 +13,6 @@
     "song": "Quản lý nhạc",
     "playlist": "Quản lý danh sách"
   },
-  "column": {
-    "name": "Tên bài hát",
-    "artist": "Nghệ sĩ",
-    "view": "Lượt xem"
-  },
   "table": {
     "search": "Tìm kiếm ..."
   },
@@ -32,9 +27,23 @@
     "editSong": "Sửa bài hát",
     "songName": "Tên bài hát",
     "songArtist": "Nghệ sĩ",
-    "inputError": "Vui lòng nhập tên bài hát"
+    "inputError": "Vui lòng nhập tên bài hát",
+    "column": {
+      "name": "Tên bài hát",
+      "artist": "Nghệ sĩ",
+      "view": "Lượt xem"
+    }
   },
   "playlist": {
-    "playlistTitle": "Quản lý danh sách"
+    "playlistTitle": "Quản lý danh sách",
+    "createPlaylist": "Tạo danh sách bài hát",
+    "editPlaylist": "Sửa danh sách bài hát",
+    "playlistName": "Tên danh sách",
+    "playlistDescription": "Mô tả ",
+    "inputError": "Vui lòng nhập tên danh sách.",
+    "column": {
+      "name": "Tên danh sách",
+      "description": "Mô tả"
+    }
   }
 }

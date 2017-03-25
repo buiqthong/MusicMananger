@@ -30,9 +30,9 @@
         getList();
 
         vm.configColumnSongsTable = [
-            {title: $i18next('column.name'), field: "name"},
-            {title: $i18next('column.artist'), field: "artist"},
-            {title: $i18next('column.view'), field: "view"}
+            {title: $i18next('song.column.name'), field: "name"},
+            {title: $i18next('song.column.artist'), field: "artist"},
+            {title: $i18next('song.column.view'), field: "view"}
         ];
 
         vm.selectedSongs = [];

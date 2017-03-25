@@ -30,8 +30,8 @@
         }
         getList();
         vm.configColumnPlaylistTable = [
-            {title: "Name", field: "name"},
-            {title: "Description", field: "description"}
+            {title: $i18next('playlist.column.name'), field: "name"},
+            {title: $i18next('playlist.column.description'), field: "description"}
         ];
         vm.selectedPlaylist = [];
         //config for modal dialog
