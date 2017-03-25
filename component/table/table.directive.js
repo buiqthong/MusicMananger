@@ -20,19 +20,19 @@
 
                     // Show detail view
                     function showDetailView() {
-                        scope.hideDetail= false;
+                        scope.hideDetail = false;
                         bodyView.addClass('col-md-6');
                         detailView.addClass('col-md-6');
                     }
                     // Hide detail view
                     scope.hideDetailView = function() {
-                        scope.hideDetail= true;
+                        scope.hideDetail = true;
                         bodyView.removeClass('col-md-6');
                         detailView.removeClass('col-md-6');
                     };
 
-                    // Check condition to show detail view
-                    scope.checkDetailView = function () {
+                    // Check single select to show detail view
+                    scope.checkSingleSelect = function () {
                         return scope.selectedList.length === 1;
                     };
 
@@ -55,9 +55,11 @@
                     // Check all check box
                     scope.checkAll = function () {
                         if(scope.selectAllCheckbox()){
+                            scope.hideDetailView();
                             scope.selectedList.splice(0, scope.selectedList.length);
                         }
                         else {
+                            scope.hideDetailView();
                             scope.selectedList.splice(0, scope.selectedList.length);
                             for(var i = 0; i < scope.data.length; i++){
                                 scope.data[i].selected = true;
@@ -92,7 +94,7 @@
                             scope.hideDetailView();
                             scope.selectedList.splice(index,1);
                         }
-                        if(scope.checkDetailView()){
+                        if(scope.checkSingleSelect()){
                             showDetailView();
                         }
                     };
@@ -106,6 +108,10 @@
                         }
                         scope.valueSort = valueSort;
                     };
+
+                    scope.$on('hideDetailView',function(event, data){
+                        scope.hideDetailView();
+                    });
 
                 }
             }

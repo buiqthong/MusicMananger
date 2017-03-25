@@ -19,6 +19,7 @@
                     view: 'app/songs/template/song.view.html'
                 },
                 attrs: {
+                    id: 'id',
                     name: 'name',
                     artist: 'artist'
                 }
@@ -29,6 +30,11 @@
                     action: 'app/playlist/action/playlist.action.html',
                     directive: 'app/playlist/template/playlist.directive.html',
                     view: 'app/playlist/template/playlist.view.html'
+                },
+                attrs: {
+                    id: 'id',
+                    name: 'name',
+                    description: 'description'
                 }
             }
         });

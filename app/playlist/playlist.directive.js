@@ -3,14 +3,16 @@
  */
 (function () {
     'use strict';
-    angular.module('mainApp')
-        .directive('playlistDirective',[ 'MusicConstant', function (MusicConstant) {
-            return {
-                restrict: 'AE',
-                scope: {},
-                templateUrl: MusicConstant.playlist.templateUrl.main,
-                controller: 'PlaylistController',
-                controllerAs: 'vm'
-            }
-        }])
+    angular.module('playlistApp')
+        .directive('playlistDirective', playlistDirectiveFn);
+    playlistDirectiveFn.$inject = ['MusicConstant'];
+    function playlistDirectiveFn(MusicConstant) {
+        return {
+            restrict: 'AE',
+            scope: {},
+            templateUrl: MusicConstant.playlist.templateUrl.main,
+            controller: 'PlaylistController',
+            controllerAs: 'vm'
+        }
+    }
 })();

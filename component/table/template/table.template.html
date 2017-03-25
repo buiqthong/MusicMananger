@@ -3,7 +3,7 @@
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                <input type="text" class="form-control" placeholder="Search..." ng-model="search">
+                <input type="text" class="form-control" placeholder="{{'table.search' | i18next}}" ng-model="search">
             </div>
         </div>
     </form>
@@ -34,8 +34,9 @@
         </table>
     </div>
 </div>
+<!--<div>{{::'table.selected' | i18next}}<span class="badge"> {{selectedList.length}}</span></div>-->
 <div class="detail-view">
-    <div class="panel panel-default" ng-if="checkDetailView() && !hideDetail">
+    <div class="panel panel-default" ng-if="checkSingleSelect() && !hideDetail && hideDetail!==undefined">
         <div class="panel-body">
             <div ng-include="detailTemplate"></div>
         </div>

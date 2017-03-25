@@ -1,0 +1,46 @@
+<form class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="app-heading">
+            <span ng-if="vm.isCreate">{{'playlist.createPlaylist' | i18next}}</span>
+            <span ng-if="vm.isEdit">{{'playlist.editPlaylist' | i18next}}</span>
+        </h4>
+    </div>
+
+    <div class="panel-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-md-3 control-label">{{::'playlist.playlistName' | i18next}}</label>
+                <div class="col-md-6">
+                    <input class="form-control"
+                           ng-model="vm.cache.currentItem[vm.constant.playlist.attrs.name]"
+                           id="playlist-name">
+                    <span class="error text-danger" ng-show="vm.checkValidForm()">{{::'playlist.inputError' | i18next}}</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">{{::'playlist.playlistDescription' | i18next}}</label>
+                <div class="col-md-6">
+                    <input class="form-control"
+                           ng-model="vm.cache.currentItem[vm.constant.playlist.attrs.description]"
+                           id="playlist-description">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <div class="text-right">
+            <button id="playlist-btn-create" ng-if="vm.isCreate" type="submit" class="btn btn-primary"
+                    ng-click="vm.actionAddPlaylist()" ng-disabled="vm.checkValidForm()"
+                    title="{{::'button-label.create' | i18next}}">{{::'button-label.create' | i18next}}
+            </button>
+            <button id="playlist-btn-edit" ng-if="vm.isEdit" type="submit" class="btn btn-primary"
+                    ng-click="vm.actionEditPlaylist()" ng-disabled="!vm.checkValidForm() && vm.valueNotChanged()"
+                    title="{{::'button-label.apply' | i18next}}">{{::'button-label.apply' | i18next}}
+            </button>
+            <button id="playlist-btn-cancel" type="button" class="btn btn-default" ng-click="vm.goToHome()"
+                    title="{{::'button-label.cancel' | i18next}}">{{::'button-label.cancel' | i18next}}
+            </button>
+        </div>
+    </div>
+</form>

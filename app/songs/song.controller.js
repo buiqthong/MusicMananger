@@ -3,10 +3,10 @@
  */
 (function(){
     'use strict';
-    angular.module('mainApp')
-        .controller('SongsController', controllerFn);
-    controllerFn.$inject = ['SongsService', 'SongsShareService', 'MusicConstant'];
-    function controllerFn(SongsService, SongsShareService, MusicConstant) {
+    angular.module('songApp')
+        .controller('SongsController', SongsControllerFn);
+    SongsControllerFn.$inject = ['$rootScope','$i18next','SongsService', 'SongsShareService', 'MusicConstant'];
+    function SongsControllerFn($rootScope,$i18next, SongsService, SongsShareService, MusicConstant) {
         var vm = this;
         vm.cache = SongsService.cache;
         vm.constant = MusicConstant;
@@ -20,7 +20,7 @@
         ];
         vm.cache.currentView = vm.constant.song.templateUrl.view;
         function getList() {
-            SongsShareService.getListSong().then(function (response) {
+            SongsShareService.getList().then(function (response) {
                 vm.listSongs = response;
             },function () {
                 vm.messageError = true;
@@ -30,13 +30,17 @@
         getList();
 
         vm.configColumnSongsTable = [
-            {title: "Name", field: "name"},
-            {title: "Artist", field: "artist"},
-            {title: "View", field: "view"}
+            {title: $i18next('column.name'), field: "name"},
+            {title: $i18next('column.artist'), field: "artist"},
+            {title: $i18next('column.view'), field: "view"}
         ];
+
         vm.selectedSongs = [];
-        vm.modalTitle = 'Delete song';
-        vm.modalBody = 'Are you sure you want to delete this song';
+        //config for modal dialog
+        vm.idModal = 'song-modal';
+        vm.titleModal = 'Delete song';
+        vm.bodyModal = 'Are you sure you want to delete this song';
+        vm.cache.currentItem = vm.selectedSongs[0];
 
         vm.checkActiveEditBtn = function () {
             return vm.selectedSongs.length === 1;
@@ -51,12 +55,15 @@
         };
 
         vm.checkValidForm = function () {
-            return !vm.cache.currentItem[vm.constant.song.attrs.name];
+            if(vm.cache.currentItem !== undefined){
+                return !vm.cache.currentItem[vm.constant.song.attrs.name];
+            }
         };
 
         vm.goToHome = function () {
             vm.cache.currentItem = {};
             vm.cache.currentView = vm.constant.song.templateUrl.view;
+            getList();
         };
         
         vm.addSongForm = function () {
@@ -73,33 +80,37 @@
                 artist: vm.cache.currentItem.artist,
                 view: 0
             };
-            SongsService.createSong(reqBody).then(function success() {
-
-            },function error() {
-
-            })
-            .finally(function () {
-                vm.goToHome();
-            })
+            SongsService.createSong(reqBody);
+            vm.messageSuccess = true;
+            vm.messageSuccessContent = 'Create song successfully !';
+            vm.goToHome();
         };
-
-        vm.actionEditSong = function () {
-
-        };
-
 
         vm.editSongForm = function () {
             vm.isEdit = true;
             vm.isCreate = false;
             vm.cache.currentItem = vm.selectedSongs[0];
             vm.cache.currentItemJSON = angular.toJson(vm.cache.currentItem);
-            console.log(vm.cache.currentItemJSON);
             vm.cache.currentView = vm.constant.song.templateUrl.action;
         };
 
-        vm.deleteSongDialog = function () {
-            showDialog();
+        vm.actionEditSong = function () {
+            SongsService.editSong(vm.cache.currentItem);
+            vm.messageSuccess = true;
+            vm.messageSuccessContent = 'Edit song successfully !';
+            vm.goToHome();
+        };
 
+        vm.actionDeleteSong = function () {
+            var listId = _.map(vm.selectedSongs, function (item) {
+                return item[vm.constant.song.attrs.id];
+            });
+            SongsService.deleteSong(listId);
+            vm.messageSuccess = true;
+            vm.messageSuccessContent = 'Delete song successfully !';
+            vm.selectedSongs = [];
+            $rootScope.$broadcast('hideDetailView',{});
+            vm.goToHome();
         };
 
         vm.refreshData = function () {

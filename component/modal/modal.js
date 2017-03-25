@@ -8,13 +8,12 @@
             return {
                 restrict: 'AE',
                 scope: {
+                    id: '=',
                     title: '=',
-                    body: '='
+                    body: '=',
+                    okCallBack: '&'
                 },
-                templateUrl: 'component/modal/template/modal.html',
-                controller: ['$scope',function ($scope) {
-
-                }]
+                templateUrl: 'component/modal/template/modal.html'
             };
         })
 })();

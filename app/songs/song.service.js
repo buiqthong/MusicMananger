@@ -4,37 +4,42 @@
  */
 (function () {
     'use strict';
-    angular.module('mainApp')
-        .factory('SongsService',['$http', function ($http) {
-            var service = {};
-            var api = {
-                song: 'app/songs/songs.json'
+    angular.module('songApp')
+        .factory('SongsService', SongsServiceFn);
+    SongsServiceFn.$inject = ['SongsShareService'];
+    function SongsServiceFn(SongsShareService) {
+        var service = {};
+
+        function init() {
+            service.cache = {
+                currentView: {},
+                currentItem: {}
             };
+        }
+        init();
 
-            // function getListSong() {
-            //     return $http.get(api.song).then(function success(response) {
-            //          return response.data;
-            //     })
-            // }
+        function createSong(song) {
+            SongsShareService.getList().then(function (response) {
+                return response.push(song);
+            });
+        }
 
-            function init() {
-                service.cache = {
-                    currentView: {},
-                    currentItem: {}
-                };
-            }
-            init();
+        function editSong(song) {
 
+        }
 
-            function createSong(song) {
-                // listSongs.push(song);
-            }
+        function deleteSong(listId) {
+            SongsShareService.getList().then(function (response) {
+               var listSong =  _.remove(response, function(item){
+                    return listId.indexOf(item.id) >= 0;
+                });
+                return listSong
+            });
+        }
+        service.createSong = createSong;
+        service.editSong = editSong;
+        service.deleteSong = deleteSong;
 
-
-            // service.getListSong = getListSong;
-            service.createSong = createSong;
-
-
-            return service;
-        }])
+        return service;
+    }
 })();

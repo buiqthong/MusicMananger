@@ -8,8 +8,14 @@
         'mod.modal'
     ]);
 
+    angular.module('app',[
+        'songApp',
+        'playlistApp'
+    ]);
+
     angular.module('mainApp',[
         'component',
+        'app',
         'ngRoute',
         'jm.i18next'
 

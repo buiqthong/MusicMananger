@@ -3,54 +3,41 @@
  */
 (function () {
     'use strict';
-    angular.module('mainApp')
-        .factory('PlaylistService', ['MusicConstant', function (MusicConstant) {
-            var service = {};
-            service.listColumn = [
-                {title: "Name", field: "name"},
-                {title: "Description", field: "description"}
-            ];
-            service.listPlaylist = [
-                {id: 1, name: "Nhac tre cho loc", description: "Nhac tre moi hay nhat"},
-                {id: 2, name: "Nhac tre 98 2000", description: "Nhac tre xua"},
-                {id: 3, name: "Nhac tru tinh", description: "Nhac tru tinh hay nhat"}
-            ];
+    angular.module('playlistApp')
+        .factory('PlaylistService', PlaylistServiceFn);
+    PlaylistServiceFn.$inject = ['PlaylistShareService'];
+    function PlaylistServiceFn(PlaylistShareService) {
+        var service = {};
 
-            function getCurrentView() {
-                return {
-                    view: {
-                        id: 'view',
-                        templateUrl: MusicConstant.playlist.templateUrl.view
-                    },
-                    add : {
-                        id: 'add',
-                        templateUrl: MusicConstant.playlist.templateUrl.action
-                    },
-                    edit: {
-                        id: 'edit',
-                        templateUrl: MusicConstant.playlist.templateUrl.action
-                    },
-                    result: {
-                        id: 'result',
-                        templateUrl: MusicConstant.playlist.templateUrl.result
-                    }
-                };
-            }
+        function init() {
+            service.cache = {
+                currentView: {},
+                currentItem: {}
+            };
+        }
+        init();
 
+        function createPlaylist(playlist) {
+            PlaylistShareService.getList().then(function (response) {
+                return response.push(playlist);
+            });
+        }
 
-            function defaultCacheData() {
-                return {
-                    currentView: getCurrentView().view,
-                    currentItem: {}
-                }
-            }
+        function editPlaylist(playlist) {
 
-            function init() {
-                service.cache = defaultCacheData();
-            }
-            init();
+        }
 
-            service.getCurrentView = getCurrentView;
-            return service;
-        }])
+        function deletePlaylist(listId) {
+            PlaylistShareService.getList().then(function (response) {
+                var listPlaylist =  _.remove(response, function(item){
+                    return listId.indexOf(item.id) >= 0;
+                });
+                return listPlaylist
+            });
+        }
+        service.createPlaylist = createPlaylist;
+        service.editPlaylist = editPlaylist;
+        service.deletePlaylist = deletePlaylist;
+        return service;
+    }
 })();

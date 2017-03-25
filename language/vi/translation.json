@@ -5,12 +5,21 @@
     "delete": "Xóa",
     "apply": "OK",
     "cancel": "Hủy",
-    "hideDetail": "Ẩn chi tiết"
+    "hideDetail": "Ẩn chi tiết",
+    "refresh": "Làm mới"
   },
   "sideBar": {
     "home": "HOME",
     "song": "Quản lý nhạc",
     "playlist": "Quản lý danh sách"
+  },
+  "column": {
+    "name": "Tên bài hát",
+    "artist": "Nghệ sĩ",
+    "view": "Lượt xem"
+  },
+  "table": {
+    "search": "Tìm kiếm ..."
   },
   "music": {
     "appTitle": "Quản lý nhạc",
@@ -18,7 +27,12 @@
     "appFooter": "Bản quyền thuộc về Quản lý nhạc v1.0"
   },
   "song": {
-    "songsTitle": "Quản lý nhạc"
+    "songsTitle": "Quản lý nhạc",
+    "createSong": "Thêm bài hát",
+    "editSong": "Sửa bài hát",
+    "songName": "Tên bài hát",
+    "songArtist": "Nghệ sĩ",
+    "inputError": "Vui lòng nhập tên bài hát"
   },
   "playlist": {
     "playlistTitle": "Quản lý danh sách"

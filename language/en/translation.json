@@ -13,6 +13,15 @@
     "song": "Song",
     "playlist": "Playlist"
   },
+  "table": {
+    "search": "Search...",
+    "selected": "Selected"
+  },
+  "column": {
+    "name": "Name",
+    "artist": "Artist",
+    "view": "View"
+  },
   "music": {
     "appTitle": "Music Manager",
     "appSubTitle": "Let the music flow into your heart",
@@ -27,6 +36,11 @@
     "inputError": "Please enter song name"
   },
   "playlist": {
-    "playlistTitle": "Playlist manager"
+    "playlistTitle": "Playlist manager",
+    "createPlaylist": "Create playlist",
+    "editPlaylist": "Edit playlist",
+    "playlistName": "Name",
+    "playlistDescription": "Description",
+    "inputError": "Please enter playlist name"
   }
 }
