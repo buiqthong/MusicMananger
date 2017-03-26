@@ -19,17 +19,24 @@
             }
         ];
         vm.cache.currentView = vm.constant.song.templateUrl.view;
+        vm.songDetailTemplate = vm.constant.song.templateUrl.detail;
         function getList() {
             SongsShareService.getList().then(function (response) {
                 vm.listSongs = response;
+                console.log(vm.listSongs);
             },function () {
                 vm.messageError = true;
                 vm.messageErrorContent = 'Something went wrong !'
             });
         }
         getList();
-
-        vm.configColumnSongsTable = [
+        vm.allSongColumn = [
+            {title: $i18next('song.column.name'), field: "name"},
+            {title: $i18next('song.column.artist'), field: "artist"},
+            {title: $i18next('song.column.playlist'), field: "playlist"},
+            {title: $i18next('song.column.view'), field: "view"}
+        ];
+        vm.columnSongsTable = [
             {title: $i18next('song.column.name'), field: "name"},
             {title: $i18next('song.column.artist'), field: "artist"},
             {title: $i18next('song.column.view'), field: "view"}

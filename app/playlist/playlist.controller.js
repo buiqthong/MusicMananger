@@ -11,6 +11,7 @@
         vm.cache = PlaylistService.cache;
         vm.constant = MusicConstant;
         vm.cache.currentView = vm.constant.playlist.templateUrl.view;
+        vm.playlistDetailTemplate = vm.constant.playlist.templateUrl.detail;
         vm.breadcrumb = [
             {
                 title: 'Playlist',
@@ -29,9 +30,16 @@
             });
         }
         getList();
-        vm.configColumnPlaylistTable = [
+        vm.allPlaylistColumn = [
             {title: $i18next('playlist.column.name'), field: "name"},
-            {title: $i18next('playlist.column.description'), field: "description"}
+            {title: $i18next('playlist.column.description'), field: "description"},
+            {title: $i18next('playlist.column.view'), field: "view"},
+            {title: $i18next('playlist.column.song'), field: "song"}
+        ];
+        vm.columnPlaylistTable = [
+            {title: $i18next('playlist.column.name'), field: "name"},
+            {title: $i18next('playlist.column.description'), field: "description"},
+            {title: $i18next('playlist.column.view'), field: "view"}
         ];
         vm.selectedPlaylist = [];
         //config for modal dialog

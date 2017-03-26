@@ -9,11 +9,14 @@
                 restrict: 'AE',
                 scope: {
                     data: '=',
-                    columns: '=',
-                    selectedList: '='
+                    columns: '=?',
+                    columnsTable: '=?',
+                    selectedList: '=?',
+                    tplDetail: '=?'
                 },
                 templateUrl: 'component/table/template/table.template.html',
                 link: function (scope, element, attrs) {
+                    scope.detailTemplateBody = scope.tplDetail;
                     var bodyView = element.find('.body-view');
                     var detailView = element.find('.detail-view');
                     scope.detailTemplate = 'component/table/template/table-detail.template.html';

@@ -24,8 +24,10 @@
     <div class="panel-heading">{{'playlist.playlistTitle'| i18next}}</div>
     <div class="panel-body">
         <table-directive data="vm.listPlaylist"
-                         columns="vm.configColumnPlaylistTable"
-                         selected-list="vm.selectedPlaylist">
+                         columns="vm.allPlaylistColumn"
+                         columns-table="vm.columnPlaylistTable"
+                         selected-list="vm.selectedPlaylist"
+                         tpl-detail="vm.playlistDetailTemplate">
         </table-directive>
 
     </div>

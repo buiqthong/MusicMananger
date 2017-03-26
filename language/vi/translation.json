@@ -14,7 +14,8 @@
     "playlist": "Quản lý danh sách"
   },
   "table": {
-    "search": "Tìm kiếm ..."
+    "search": "Tìm kiếm ...",
+    "selected": "Đã chọn"
   },
   "music": {
     "appTitle": "Quản lý nhạc",
@@ -31,7 +32,8 @@
     "column": {
       "name": "Tên bài hát",
       "artist": "Nghệ sĩ",
-      "view": "Lượt xem"
+      "view": "Lượt xem",
+      "playlist": "Bài hát thuộc danh sách"
     }
   },
   "playlist": {
@@ -43,7 +45,9 @@
     "inputError": "Vui lòng nhập tên danh sách.",
     "column": {
       "name": "Tên danh sách",
-      "description": "Mô tả"
+      "description": "Mô tả",
+      "song": "Các bài hát trong danh sách",
+      "view": "View"
     }
   }
 }

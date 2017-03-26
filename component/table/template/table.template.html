@@ -14,7 +14,7 @@
                 <th style="width:40px" ng-click="checkAll()">
                     <input class="check-box" type="checkbox" ng-checked="selectAllCheckbox()"/>
                 </th>
-                <th ng-repeat="column in columns">
+                <th ng-repeat="column in columnsTable">
                     <span class="header-title" ng-click="sortType(column.field)" ng-bind="column.title"></span>
                     <i class="fa fa-caret-down" ng-show="valueSort === '{{column.field}}' && sortReverse"></i>
                     <i class="fa fa-caret-up" ng-show="valueSort === '{{column.field}}'&& !sortReverse"></i>
@@ -28,13 +28,12 @@
                     <input class="check-box" type="checkbox" ng-checked="selectCheckbox(item)"
                            ng-click="clickMultipleItem(item);$event.stopPropagation();"/>
                 </td>
-                <td ng-repeat="row in columns">{{item[row.field]}}</td>
+                <td ng-repeat="row in columnsTable">{{item[row.field]}}</td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
-<!--<div>{{::'table.selected' | i18next}}<span class="badge"> {{selectedList.length}}</span></div>-->
 <div class="detail-view">
     <div class="panel panel-default" ng-if="checkSingleSelect() && !hideDetail && hideDetail!==undefined">
         <div class="panel-body">

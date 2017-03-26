@@ -32,6 +32,7 @@
     "column": {
       "name": "Name",
       "artist": "Artist",
+      "playlist": "This song in playlists",
       "view": "View"
     }
   },
@@ -44,7 +45,9 @@
     "inputError": "Please enter playlist name",
     "column": {
       "name": "Name",
-      "description": "Description"
+      "description": "Description",
+      "song": "Songs in this playlist",
+      "view": "View"
     }
   }
 }

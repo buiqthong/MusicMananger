@@ -1,11 +1,2 @@
 <button type="button" class="btn btn-default" ng-click="hideDetailView()">{{'button-label.hideDetail' | i18next}}</button>
-<div class="form-horizontal">
-    <div class="form-group" ng-repeat="column in columns">
-        <label class="control-label col-md-5">{{column.title}}</label>
-        <div>
-            <div class="col-md-7 form-control-static">
-            {{selectedList[0][column.field]}}
-            </div>
-        </div>
-    </div>
-</div>
+<div ng-include="detailTemplateBody"></div>
