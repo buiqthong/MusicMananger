@@ -15,7 +15,7 @@
         <label class="control-label col-md-5">{{::'song.column.playlist' | i18next}}</label>
         <div class="col-md-7 form-control-static">
             <div class="list-group">
-                <div href="#" class="list-group-item" ng-repeat="item in selectedList[0][columns[2].field]">
+                <div href="#" class="list-group-item" ng-repeat="item in selectedList[0][columns[2].field] track by item.id">
                     <h4 class="list-group-item-heading">{{item.name}}</h4>
                     <p class="list-group-item-text">{{item.description}}</p>
                 </div>
