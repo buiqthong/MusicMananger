@@ -41,7 +41,7 @@
                 vm.messageErrorContent = 'Something went wrong !'
             });
         }
-         
+
         vm.allSongColumn = [
             {title: $i18next('song.column.name'), field: "name"},
             {title: $i18next('song.column.artist'), field: "artist"},
@@ -106,7 +106,6 @@
             vm.messageSuccessContent = 'Create song successfully !';
             vm.goToHome();
         };
-
         vm.editSongForm = function () {
             vm.isEdit = true;
             vm.isCreate = false;
