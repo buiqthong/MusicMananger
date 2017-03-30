@@ -26,6 +26,15 @@
                            id="song-artist">
                 </div>
             </div>
+            <div class="form-group">
+                <label class="col-md-3 control-label">Add playlist </label>
+                <div class="col-md-6">
+                    <select multiple class="form-control" id="select-playlist"
+                            ng-model="vm.selectedListItem"
+                            ng-options="item.name for item in vm.listPlaylist track by item.id">
+                    </select>
+                </div>
+            </div>
         </div>
     </div>
     <div class="panel-footer">
