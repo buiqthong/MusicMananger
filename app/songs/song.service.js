@@ -6,8 +6,8 @@
     'use strict';
     angular.module('songApp')
         .factory('SongsService', SongsServiceFn);
-    SongsServiceFn.$inject = ['SongsShareService'];
-    function SongsServiceFn(SongsShareService) {
+    SongsServiceFn.$inject = ['SongsShareService','PlaylistShareService'];
+    function SongsServiceFn(SongsShareService,PlaylistShareService) {
         var service = {};
 
         function init() {
@@ -22,6 +22,12 @@
             SongsShareService.getList().then(function (response) {
                 return response.push(song);
             });
+            PlaylistShareService.getList().then(function (response) {
+                for (var i =0; i < song.playlist.length; i++){
+                    PlaylistShareService.addSongToPlaylist(song.playlist[i].id, song);
+                }
+            });
+
         }
 
         function editSong(song) {

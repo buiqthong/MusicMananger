@@ -26,8 +26,17 @@
         function getList() {
             return $q.when(listPlaylist);
         }
+        
+        function addSongToPlaylist(playlistId, song) {
+            for (var i = 0; i< listPlaylist.length; i++){
+                if(playlistId === listPlaylist[i].id){
+                    listPlaylist[i].song.push(song);
+                }
+            }
+        }
 
         service.getList= getList;
+        service.addSongToPlaylist= addSongToPlaylist;
 
         return service;
     }

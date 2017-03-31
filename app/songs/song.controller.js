@@ -5,8 +5,8 @@
     'use strict';
     angular.module('songApp')
         .controller('SongsController', SongsControllerFn);
-    SongsControllerFn.$inject = ['$rootScope','$i18next','SongsService', 'SongsShareService', 'MusicConstant'];
-    function SongsControllerFn($rootScope,$i18next, SongsService, SongsShareService, MusicConstant) {
+    SongsControllerFn.$inject = ['$rootScope','$i18next','SongsService', 'PlaylistShareService', 'SongsShareService', 'MusicConstant'];
+    function SongsControllerFn($rootScope,$i18next, SongsService, PlaylistShareService, SongsShareService, MusicConstant) {
         var vm = this;
         vm.cache = SongsService.cache;
         vm.constant = MusicConstant;
@@ -23,13 +23,25 @@
         function getList() {
             SongsShareService.getList().then(function (response) {
                 vm.listSongs = response;
-                console.log(vm.listSongs);
             },function () {
                 vm.messageError = true;
                 vm.messageErrorContent = 'Something went wrong !'
             });
         }
         getList();
+        function getListPlaylist() {
+            PlaylistShareService.getList().then(function (response) {
+                vm.listPlaylistTemp = angular.copy(response);
+                for(var i =0; i < vm.listPlaylistTemp.length; i++){
+                    delete vm.listPlaylistTemp[i].song;
+                }
+                vm.listPlaylist = vm.listPlaylistTemp;
+            },function () {
+                vm.messageError = true;
+                vm.messageErrorContent = 'Something went wrong !'
+            });
+        }
+
         vm.allSongColumn = [
             {title: $i18next('song.column.name'), field: "name"},
             {title: $i18next('song.column.artist'), field: "artist"},
@@ -76,6 +88,7 @@
         vm.addSongForm = function () {
             vm.isCreate = true;
             vm.isEdit = false;
+            getListPlaylist();
             vm.cache.currentView = vm.constant.song.templateUrl.action;
             
         };
@@ -85,14 +98,14 @@
                 id: Math.random().toString(36).slice(2),
                 name: vm.cache.currentItem.name,
                 artist: vm.cache.currentItem.artist,
-                view: 0
+                view: 0,
+                playlist: vm.selectedListItem
             };
             SongsService.createSong(reqBody);
             vm.messageSuccess = true;
             vm.messageSuccessContent = 'Create song successfully !';
             vm.goToHome();
         };
-
         vm.editSongForm = function () {
             vm.isEdit = true;
             vm.isCreate = false;

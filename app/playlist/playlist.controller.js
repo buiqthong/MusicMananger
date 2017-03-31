@@ -5,8 +5,8 @@
     'use strict';
     angular.module('playlistApp')
         .controller('PlaylistController', PlaylistControllerFn);
-    PlaylistControllerFn.$inject =  ['$rootScope','$i18next','PlaylistService','PlaylistShareService','MusicConstant'];
-    function PlaylistControllerFn($rootScope,$i18next,PlaylistService, PlaylistShareService, MusicConstant) {
+    PlaylistControllerFn.$inject =  ['$rootScope','$i18next','PlaylistService','PlaylistShareService', 'SongsShareService', 'MusicConstant'];
+    function PlaylistControllerFn($rootScope,$i18next,PlaylistService, PlaylistShareService, SongsShareService, MusicConstant) {
         var vm = this;
         vm.cache = PlaylistService.cache;
         vm.constant = MusicConstant;
@@ -29,7 +29,20 @@
                 vm.messageErrorContent = 'Something went wrong !'
             });
         }
+        function getListSong() {
+            SongsShareService.getList().then(function (response) {
+                vm.listSongTemp = angular.copy(response);
+                for(var i =0; i < vm.listSongTemp.length; i++){
+                    delete vm.listSongTemp[i].playlist;
+                }
+                vm.listSong = vm.listSongTemp;
+            },function () {
+                vm.messageError = true;
+                vm.messageErrorContent = 'Something went wrong !'
+            });
+        }
         getList();
+        vm.selectedListItem = [];
         vm.allPlaylistColumn = [
             {title: $i18next('playlist.column.name'), field: "name"},
             {title: $i18next('playlist.column.description'), field: "description"},
@@ -75,6 +88,7 @@
         vm.addPlaylistForm = function () {
             vm.isCreate = true;
             vm.isEdit = false;
+            getListSong();
             vm.cache.currentView = vm.constant.playlist.templateUrl.action;
 
         };
@@ -84,7 +98,8 @@
                 id: Math.random().toString(36).slice(2),
                 name: vm.cache.currentItem.name,
                 description: vm.cache.currentItem.description,
-                view: 0
+                view: 0,
+                song: vm.selectedListItem
             };
             PlaylistService.createPlaylist(reqBody);
             vm.messageSuccess = true;
